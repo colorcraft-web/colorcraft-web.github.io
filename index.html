@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Estado del server</title>
+</head>
+
+<body>
+ESTADO ACTUAL DE COLORCRAFT (ip: 144.91.105.97:32540)
+<h1 id=estado></h1>
+<h1> Número de jugadores online: </h1>
+ <h1 id=ipTex></h1>
+  <script>
+    fetch("https://eu.mc-api.net/v3/server/ping/144.91.105.97:32540")
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (myJson) {
+        document.querySelector("#estado").innerHTML = myJson.online ? 'El server está abierto' : 'El server está cerrado';
+		document.querySelector("#ipTex").innerHTML = myJson.players.online;
+		document.querySelector("#ipText").innerHTML = myJson.players.max;
+      });
+  </script>
+</body>
+<!--código creado por hector-->
+</html>
